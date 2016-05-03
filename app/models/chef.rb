@@ -1,4 +1,7 @@
 class Chef < ActiveRecord::Base
+  
+  has_many :recipes
+  
   #callbacks - ensure emails are saved as downcase
   before_save {self.email = email.downcase } 
   

@@ -2,11 +2,18 @@ require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
   def setup
-    @recipe = Recipe.new(name: "chicken parm", summary: "best dish ever", description: "put chicken in oven, then wait")
+    #creates a virtual sandbox to store, does not end up in database after test
+    @chef = Chef.create(name: "bob", email: "bob@e.com")
+    @recipe = @chef.recipes.build(name: "chicken parm", summary: "best dish ever", description: "put chicken in oven, then wait")
   end
   
   test "recipe should be valid" do
     assert @recipe.valid?
+  end
+  
+  test "Every recipe has to have a chef id" do
+    @recipe.chef_id = nil
+    assert_not @recipe.valid?
   end
   
   test "name should be present" do
