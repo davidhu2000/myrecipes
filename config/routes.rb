@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'    
   get '/home' => 'pages#home'
 
-  resources :recipes #does what the code block below does.
+#  resources :recipes #does what the code block below does.
 ################################################################################  
 #  get '/recipes', to: 'recipes#index'
 #  get '/recipes/new', to: 'recipes#new', as: 'new_recipe'
@@ -12,5 +12,11 @@ Rails.application.routes.draw do
 #  get '/recipes/:id', to: 'recipes#show', as: 'recipe'
 #  delete '/recipes/:id', to: 'recipes#destroy'
 ################################################################################
+  
+  resources :recipes do
+    member do
+      post 'like'
+    end
+  end
   
 end
