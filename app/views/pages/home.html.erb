@@ -9,26 +9,27 @@
     <h1>Welcome to MyRecipes</h1>
     <h2>Home page for My Recipes App</h2>
     
-    <%= link_to "Sign Up", "", class: "btn btn-lg btn-success" %>
+    <%= link_to "Sign Up", register_path, class: "btn btn-lg btn-success" %>
   </div>
   
   <div class="row">
+    
     <div class="col-lg-4">
-      <h3 class="midrow">View Recipes as Guest User</h3>
-      <h2 class="left">Browse and view recipes as a guest and sign up later</h2>
+      <h3 class="midrow">Sign in to your account</h3>
+      <h2 class="left">Add/update recipes, create reviews, like and dislike recipes.</h2>
+      <p><%= link_to "Log In", login_path, class: "btn btn-warning btn-small" %></p>
+    </div>
+    
+    <div class="col-lg-4">
+      <h3 class="midrow">View All Recipes</h3>
+      <h2 class="left">Browse and view recipes</h2>
       <p><%= link_to "Browse Recipes", recipes_path, class: "btn btn-warning btn-small" %></p>
     </div>
-    
+  
     <div class="col-lg-4">
-      <h3 class="midrow">View Recipes as Guest User</h3>
-      <h2 class="left">Browse and view recipes as a guest and sign up later</h2>
-      <p><%= link_to "Browse Recipes","", class: "btn btn-warning btn-small" %></p>
-    </div>
-    
-    <div class="col-lg-4">
-      <h3 class="midrow">View Recipes as Guest User</h3>
-      <h2 class="left">Browse and view recipes as a guest and sign up later</h2>
-      <p><%= link_to "Browse Recipes","", class: "btn btn-warning btn-small" %></p>
+      <h3 class="midrow">View All Chefs</h3>
+      <h2 class="left">Browse and view all the wonderful chefs</h2>
+      <p><%= link_to "Browse Chefs", chefs_path, class: "btn btn-warning btn-small" %></p>
     </div>
     
   </div>

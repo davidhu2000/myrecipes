@@ -2,13 +2,15 @@
 
 <div class="row">
   <div class="col-md-4 pull-right center">
-    <%= gravatar_for(@recipe.chef, size: 200) %>
+    <%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef) %>
     <p>
       <h5>Brought to you by: <%= @recipe.chef.name %></h5>
     </p>
   </div>
   <div class="col-md-8">
-    <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
+    <% if logged_in? && current_user.id == @recipe.chef.id %>
+      <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
+    <% end %>
     <h3><%= @recipe.summary %></h3>
     
     <div class="show_recipe">
@@ -32,4 +34,4 @@
   </div>
 </div>
 
-<h5><%= link_to "Return to Recipe Listing", recipes_path, class: "btn btn-warning btn-small" %></h5>
+<h5><%= link_to "Return to Recipe Listing", recipes_path, class: "btn btn-warning btn-sm" %></h5>
