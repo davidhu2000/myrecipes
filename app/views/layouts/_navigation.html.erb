@@ -17,16 +17,53 @@
           </ul>
         </li>
       </div>
-      
+    
       <div class="nav_item">
         <%= link_to "New Recipe", new_recipe_path, class: "btn btn-default btn-warning" %>
       </div>
       
     <% else %>
       <div class="nav_item">
+        <%= link_to "Sign Up", register_path, class: "btn btn-default btn-success" %>
+      </div>
+      <div class="nav_item">
         <%= link_to "Login", login_path, class: "btn btn-default btn-success" %>
       </div>
     <% end %>
+    
+    <ul class="nav_ul_item">
+        <li class="dropdown">
+          <%= link_to '#', class: "btn btn-default btn-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
+            Styles <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu">
+            <% Style.all.each do |style| %>
+              <li><%= link_to style.name.capitalize, style_path(style) %></li>
+            <% end %>
+            <% if logged_in? %>
+              <li class="divider"></li>
+              <li><%= link_to 'Create New Style', new_style_path %></li>
+            <% end %>
+          </ul>
+        </li>
+    </ul>
+    
+    <ul class="nav_ul_item">
+        <li class="dropdown">
+          <%= link_to '#', class: "btn btn-default btn-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
+            Ingredient <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu">
+            <% Ingredient.all.each do |ingredient| %>
+              <li><%= link_to ingredient.name.capitalize, ingredient_path(ingredient) %></li>
+            <% end %>
+            <% if logged_in? %>
+              <li class="divider"></li>
+              <li><%= link_to 'Create New Ingredient', new_ingredient_path %></li>
+            <% end %>
+          </ul>
+        </li>
+    </ul>
     
     <div class="nav_item">
       <%= link_to "View All Chefs", chefs_path, class: "btn btn-default btn-warning" %>
@@ -35,12 +72,6 @@
     <div class="nav_item">
       <%= link_to "View All Recipes", recipes_path, class: "btn btn-default btn-warning" %>
     </div>
-    
-    <% if logged_in? %>
-      <div class="nav_item pull-right navbar-name">
-        Welcome Chef <%= display_name %>!
-      </div>
-    <% end %>
     
 
   </div>
