@@ -9,7 +9,7 @@
   </div>
   
   <div class="col-md-8">
-    <% if current_user.admin? %>
+    <% if logged_in? && current_user.admin? %>
       <%= link_to 'Delete Recipe', @recipe, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger pull-right" %>
     <% end %>
     <% if logged_in? && (current_user == @recipe.chef || current_user.admin?) %>
