@@ -7,10 +7,15 @@
       <h5>Brought to you by: <%= @recipe.chef.name %></h5>
     </p>
   </div>
+  
   <div class="col-md-8">
-    <% if logged_in? && current_user.id == @recipe.chef.id %>
-      <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
+    <% if current_user.admin? %>
+      <%= link_to 'Delete Recipe', @recipe, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger pull-right" %>
     <% end %>
+    <% if logged_in? && (current_user == @recipe.chef || current_user.admin?) %>
+      <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: "btn btn-success pull-right margin_right" %>
+    <% end %>
+    
     <h3><%= @recipe.summary %></h3>
     
     <div class="show_recipe">

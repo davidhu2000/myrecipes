@@ -37,3 +37,7 @@ Chef authentication
   - Ability for chefs to log in and log out
   - Restrict actions like create/edit/like feature to logged in chef only
   - Restrcting edit of recipes by chef who created the recipes
+________________________________________________________________________________
+
+Admin functionality
+- add boolean admin column to chef table to determine if user is admin
