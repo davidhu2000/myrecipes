@@ -1,0 +1,30 @@
+<%= render 'shared/page_title', title: "Reviews for #{@recipe.name}" %>
+
+<%= will_paginate @reviews %>
+
+<% @reviews.each do |review| %>
+  <div class='container'>
+    <div class='well col-md-8 col-md-offset-2'>
+      <span class="quiet pull-right"><small>Created <%= time_ago_in_words(review.created_at) %> ago</small></span>
+      <br />
+      <blockquote>
+        <p class="small-text"><%= review.body %></p>
+        <footer class="pull-right small-text">Reviewed by Chef <%= review.chef.name %></footer>
+      </blockquote> 
+
+      <br />
+      <% if current_user == review.chef || current_user.admin? %>
+        <%= link_to "Delete Review", review_path(review), method: :delete, data: {confirm: "Are you sure? You worked hard on it."}, class:"pull-right btn btn-xs btn-danger" %>
+      <% end %>
+      
+      <span>    </span>
+      <% if current_user == review.chef || current_user.admin? %>
+        <%= link_to "Edit Review", review_path(review), class:"margin_right pull-right btn btn-xs btn-warning" %>
+      <% end %>
+      <span class="quiet"><small>Updated <%= time_ago_in_words(review.updated_at) %> ago</small></span>
+    </div>
+  </div>
+  <hr />
+<% end %>
+
+<%= will_paginate @reviews %>

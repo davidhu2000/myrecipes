@@ -6,6 +6,13 @@
     <p>
       <h5>Brought to you by: <%= @recipe.chef.name %></h5>
     </p>
+    
+    <br />
+    <br />
+    
+    <% if logged_in? %>
+      <%= link_to 'Add Review', new_review_path, class: "btn btn-success" %>
+    <% end %>
   </div>
   
   <div class="col-md-8">
@@ -48,6 +55,21 @@
     </div>
     
   </div>
+</div>
+
+<%= will_paginate @reviews %>
+    
+<div class="row">
+  <% @reviews.each do |review| %>
+    <div class='col-md-4'>
+      <div class='well'>
+          <blockquote>
+            <p class="small-text"><%= review.body %></p>
+            <footer class="pull-right small-text">Reviewed by Chef <%= review.chef.name %></footer>
+          </blockquote> 
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <h5><%= link_to "Return to Recipe Listing", recipes_path, class: "btn btn-warning btn-sm" %></h5>

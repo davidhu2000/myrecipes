@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
   
   def show
     #binding.pry #pause the server at this point
+    @reviews = @recipe.reviews.paginate(page: params[:page], per_page: 3)
   end
 
   def new

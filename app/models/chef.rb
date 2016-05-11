@@ -2,6 +2,7 @@ class Chef < ActiveRecord::Base
   
   has_many :recipes
   has_many :likes
+  has_many :reviews, dependent: :destroy
   
   #callbacks - ensure emails are saved as downcase
   before_save {self.email = email.downcase } 
