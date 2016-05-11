@@ -41,3 +41,18 @@ ________________________________________________________________________________
 
 Admin functionality
 - add boolean admin column to chef table to determine if user is admin
+________________________________________________________________________________
+
+Reviews
+- migration to create reviews table
+  - body, type = text_field
+  - foreign keys: chef_id, recipe_id
+- build review model
+- create tests for the specs, add validations
+- build associations, has_many and belongs_to, and test in console
+  - recipe.reviews
+  - chef.reviews
+- display reviews on views and allow user to submit reviews
+- create routes
+- authenticated chefs can create reviews, use before_action require_user
+- paginate reviews
